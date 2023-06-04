@@ -22,7 +22,7 @@ defmodule Quickjs.MixProject do
   defp deps do
     [
       {:rustler, "~> 0.28.0"},
-      {:jason, "~> 1.4"},
+      {:jason, "~> 1.4"}
     ]
   end
 end

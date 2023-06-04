@@ -9,4 +9,12 @@ defmodule Quickjs do
       e -> e
     end
   end
+
+  def simple_run_script_timeout(js_script, timeout \\ 5000) do
+    task = Task.async(fn -> simple_run_script(js_script) end)
+    Task.await(task, timeout)
+  catch
+    :exit, {:timeout, _task} ->
+      {:error, :timeout}
+  end
 end

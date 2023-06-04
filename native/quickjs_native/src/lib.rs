@@ -57,7 +57,7 @@ fn error(value: rquickjs::Value) {
     log::error!("{}", buffer);
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn run(script: &str) -> Result<(Atom, String), rustler::Error> {
     let rt = Runtime::new().map_err(|e| rustler::Error::RaiseTerm(Box::new(e.to_string())))?;
     let ctx = Context::full(&rt).map_err(|e| rustler::Error::RaiseTerm(Box::new(e.to_string())))?;

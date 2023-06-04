@@ -8,9 +8,9 @@ pub struct JsonValue(pub serde_json::Value);
 impl<'js> FromJs<'js> for JsonValue {
     fn from_js(ctx: rquickjs::Ctx<'js>, v: rquickjs::Value<'js>) -> rquickjs::Result<Self> {
         rquickjs::Result::Ok(JsonValue(match v.type_of() {
-            rquickjs::Type::Uninitialized => serde_json::json!("undefined"),
-            rquickjs::Type::Undefined => serde_json::json!("undefined"),
-            rquickjs::Type::Null => serde_json::json!("null"),
+            rquickjs::Type::Uninitialized => serde_json::Value::Null,
+            rquickjs::Type::Undefined => serde_json::Value::Null,
+            rquickjs::Type::Null => serde_json::Value::Null,
             rquickjs::Type::Bool => serde_json::json!(v.as_bool().unwrap_or(false)),
             rquickjs::Type::Int => serde_json::json!(v.as_int().unwrap_or(0)),
             rquickjs::Type::Float => serde_json::json!(v.as_float().unwrap_or(0.0)),
