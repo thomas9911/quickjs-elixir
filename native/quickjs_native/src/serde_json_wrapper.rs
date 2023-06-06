@@ -1,5 +1,5 @@
-use rquickjs::FromJs;
 use itertools::Itertools;
+use rquickjs::FromJs;
 
 // copy pasted from https://github.com/DelSkayn/rquickjs/issues/47
 

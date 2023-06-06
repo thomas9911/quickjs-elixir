@@ -8,6 +8,9 @@ defmodule Quickjs do
       {:ok, json} -> {:ok, Jason.decode!(json)}
       e -> e
     end
+  rescue
+    e ->
+      {:error, e}
   end
 
   def simple_run_script_timeout(js_script, timeout \\ 5000) do
